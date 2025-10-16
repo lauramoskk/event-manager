@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Dashboard{% endblock %}
+
+{% block body %}
+<div class='page-container'>
+  <div class='dashboard-card'>
+    <h1>Dashboard</h1>
+    <div class='button-row'>
+      <a href='{{ url_for("logout") }}' class='btn btn-logout'>Logout</a>
+      <a href='{{ url_for("create_event") }}' class='btn btn-primary'>Criar Novo Evento</a>
+    </div>
+    <div class='table-container'>
+      <table class='table table-custom mt-3'>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id='event-body'>
+          {% for event in events %}
+          <tr>
+            <td>{{ event.event_name }}</td>
+            <td>{{ event.event_date }}</td>
+            <td>{{ event.description }}</td>
+            <td class='actions'>
+              <a href='{{ url_for("edit_event", event_id=event.id) }}' class='btn btn-sm btn-primary me-1 btn-gray'>Editar</a>
+              <a href='#' class='btn btn-sm btn-red' onclick='confirmDelete("{{ event.id }}"); return false;'>Excluir</a>
+              <form id='delete-form-{{ event.id }}' action='{{ url_for("delete_event", event_id=event.id) }}' method='POST' class='hidden'></form>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class='pagination-container'>
+      <button id='prev-page' class='arrow-btn'>←</button>
+      <span id='page-info'>Página 1 de 1</span>
+      <button id='next-page' class='arrow-btn'>→</button>
+    </div>
+  </div>
+</div>
+<script src='{{ url_for("static", filename="js/scripts.js") }}'></script>
+{% endblock %}

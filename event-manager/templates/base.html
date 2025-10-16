@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang='pt-br'>
+<head>
+  <meta charset='UTF-8'>
+  <title>{% block titulo %}Gerenciador de Eventos{% endblock %}</title>
+  <link rel='stylesheet' href='{{ url_for("static", filename="css/styles.css") }}'>
+</head>
+<body>
+  <!-- mensagens de alerta -->
+  <div class='flash-messages'>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class='alert {{ category }}'>
+            <span>{{ message }}</span>
+            <button class='close-btn' onclick='fecharAlerta(this)'>×</button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+  <!-- conteúdo principal -->
+  {% block body %}{% endblock %}
+  <script src='{{ url_for("static", filename="js/scripts.js") }}'></script>
+</body>
+</html>
