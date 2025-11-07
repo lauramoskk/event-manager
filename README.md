@@ -25,20 +25,23 @@ Cada usuário pode registrar uma conta, fazer login e acessar seu próprio paine
 
 ### Instruções de execução
 
-1. Clone o repositório e acesse a pasta:
-<br>git clone https://github.com/seu-usuario/event-manager.git
-<br>cd event-manager
+```bash
+# 1. Clone o repositório e acesse a pasta:
+git clone https://github.com/seu-usuario/event-manager.git
+cd event-manager
 
-2. Instale as dependências necessárias:
-<br>pip install Flask Flask-Login Flask-WTF Flask-SQLAlchemy WTForms python-dotenv
+# 2. Instale as dependências necessárias:
+pip install Flask Flask-Login Flask-WTF Flask-SQLAlchemy WTForms python-dotenv
 
-3. Criar o banco de dados
-<br>O sistema utiliza um banco de dados SQLite localizado dentro da pasta instance/.
-<br>Para criar o banco, execute o seguinte comando:
-<br>python create_database.py
+# 3. Criar o banco de dados
+# O sistema utiliza um banco de dados SQLite localizado dentro da pasta instance/.
+# Para criar o banco, execute o seguinte comando:
+python create_database.py
 
-4. Executar a aplicação
-<br>Com o banco de dados criado, inicie o servidor Flask:
-<br>python main.py
+# 4. Executar a aplicação
+# Com o banco de dados criado, inicie o servidor Flask:
+python main.py
 
-5. Abra o navegador e acesse: http://127.0.0.1:5000/
+# 5. Abra o navegador e acesse: http://127.0.0.1:5000/
+```
+
